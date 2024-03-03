@@ -1,6 +1,6 @@
 # Shop-Ailok
 
-Welcome to Project Name! This is a Django project designed to [brief description of the project].
+Welcome to Project Shop Ailok! This is a Django project designed.
 
 ## Installation
 
