@@ -1,7 +1,3 @@
-Certainly! Below is a basic README.md for your Django project, covering the installation of a virtual environment and running migrations:
-
----
-
 # Shop-Ailok
 
 Welcome to Project Name! This is a Django project designed to [brief description of the project].
