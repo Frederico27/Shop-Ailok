@@ -12,7 +12,7 @@ from .models import *
 
 #display title of column in admin template table
 class accountsAdminCustomer(admin.ModelAdmin):
-    list_display = ('name', 'phone', 'email', 'date_created')
+    list_display = ('id','name', 'phone', 'email', 'date_created')
     list_filter = ('name', 'phone', 'email', 'date_created')
     search_fields = ('name', 'phone', 'email', 'date_created')
     
