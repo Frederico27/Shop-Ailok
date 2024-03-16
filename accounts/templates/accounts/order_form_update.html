@@ -8,13 +8,7 @@
         <div class="card card-body">
 <form action="" method="POST">
     {% csrf_token %}
-    {{ formset.management_form }}
-    {% for form in formset %}
     {{ form|crispy }}
-    <hr>
-    <br>
-    {% endfor %}
-
    <button class="btn btn-sm btn-primary" type="submit">Submit</button>
 </form>
         </div>
