@@ -112,6 +112,22 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -145,6 +161,14 @@
         "documentation": {}
     },
     {
+        "label": "messages",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
         "label": "admin",
         "importPath": "django.contrib",
         "description": "django.contrib",
@@ -161,11 +185,20 @@
         "documentation": {}
     },
     {
-        "label": "ModelForm",
-        "importPath": "django.forms",
-        "description": "django.forms",
+        "label": "django_filters",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "django.forms",
+        "importPath": "django_filters",
+        "description": "django_filters",
+        "detail": "django_filters",
+        "documentation": {}
+    },
+    {
+        "label": "DateFilter",
+        "importPath": "django_filters",
+        "description": "django_filters",
+        "isExtraImport": true,
+        "detail": "django_filters",
         "documentation": {}
     },
     {
@@ -174,6 +207,55 @@
         "description": "django",
         "isExtraImport": true,
         "detail": "django",
+        "documentation": {}
+    },
+    {
+        "label": "forms",
+        "importPath": "django",
+        "description": "django",
+        "isExtraImport": true,
+        "detail": "django",
+        "documentation": {}
+    },
+    {
+        "label": "django.contrib.auth.forms",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.contrib.auth.forms",
+        "description": "django.contrib.auth.forms",
+        "detail": "django.contrib.auth.forms",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreationForm",
+        "importPath": "django.contrib.auth.forms",
+        "description": "django.contrib.auth.forms",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.forms",
+        "documentation": {}
+    },
+    {
+        "label": "ModelForm",
+        "importPath": "django.forms",
+        "description": "django.forms",
+        "isExtraImport": true,
+        "detail": "django.forms",
+        "documentation": {}
+    },
+    {
+        "label": "inlineformset_factory",
+        "importPath": "django.forms",
+        "description": "django.forms",
+        "isExtraImport": true,
+        "detail": "django.forms",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
         "documentation": {}
     },
     {
@@ -209,6 +291,14 @@
         "documentation": {}
     },
     {
+        "label": "login",
+        "importPath": "accounts.views",
+        "description": "accounts.views",
+        "isExtraImport": true,
+        "detail": "accounts.views",
+        "documentation": {}
+    },
+    {
         "label": "get_object_or_404",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
@@ -238,6 +328,46 @@
         "description": "django.http",
         "isExtraImport": true,
         "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "Paginator",
+        "importPath": "django.core.paginator",
+        "description": "django.core.paginator",
+        "isExtraImport": true,
+        "detail": "django.core.paginator",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "logout",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "login_required",
+        "importPath": "django.contrib.auth.decorators",
+        "description": "django.contrib.auth.decorators",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.decorators",
         "documentation": {}
     },
     {
@@ -363,6 +493,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "accounts.migrations.0009_order_note_alter_order_date_created",
+        "description": "accounts.migrations.0009_order_note_alter_order_date_created",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('accounts', '0008_alter_product_description'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='order',\n            name='note',\n            field=models.CharField(max_length=200, null=True),\n        ),",
+        "detail": "accounts.migrations.0009_order_note_alter_order_date_created",
+        "documentation": {}
+    },
+    {
         "label": "accountsAdminCustomer",
         "kind": 6,
         "importPath": "accounts.admin",
@@ -408,11 +547,29 @@
         "documentation": {}
     },
     {
+        "label": "OrderFilter",
+        "kind": 6,
+        "importPath": "accounts.filters",
+        "description": "accounts.filters",
+        "peekOfCode": "class OrderFilter(django_filters.FilterSet):\n    start_date = DateFilter(field_name='date_created', lookup_expr='gte', widget= forms.DateInput(attrs={'type': 'date'}))\n    end_date = DateFilter(field_name='date_created', lookup_expr='lte', widget= forms.DateInput(attrs={'type': 'date'}))\n    class Meta:\n        model = Order \n        fields = '__all__'\n        exclude = ['customer', 'date_created',]",
+        "detail": "accounts.filters",
+        "documentation": {}
+    },
+    {
         "label": "OrderForm",
         "kind": 6,
         "importPath": "accounts.forms",
         "description": "accounts.forms",
-        "peekOfCode": "class OrderForm(ModelForm):\n    class Meta:\n        model = Order\n        fields =  '__all__' #all field in the models\n        # fields = ['cutomer'] #only specific form",
+        "peekOfCode": "class OrderForm(ModelForm):\n    class Meta:\n        model = Order\n        fields =  '__all__' #all field in the models\n        # fields = ['cutomer'] #only specific form\nclass CreateUserForm(UserCreationForm):     \n    class Meta:\n        model = User\n        fields = ['username', 'email', 'password1', 'password2']",
+        "detail": "accounts.forms",
+        "documentation": {}
+    },
+    {
+        "label": "CreateUserForm",
+        "kind": 6,
+        "importPath": "accounts.forms",
+        "description": "accounts.forms",
+        "peekOfCode": "class CreateUserForm(UserCreationForm):     \n    class Meta:\n        model = User\n        fields = ['username', 'email', 'password1', 'password2']",
         "detail": "accounts.forms",
         "documentation": {}
     },
@@ -457,7 +614,7 @@
         "kind": 5,
         "importPath": "accounts.urls",
         "description": "accounts.urls",
-        "peekOfCode": "urlpatterns = [\n    path('', views.home, name='home'),\n    path('product/', views.product, name='products'),\n    path('customer/<str:pk_test>', views.customer, name='customer'),\n    path('createOrder/', views.createOrder, name='create_order'),\n    path('updateOrder/<str:pk>/', views.updateOrder, name='update_order'),\n    path('deleteOrder/<str:pk>/', views.deleteOrder, name='delete_order'),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('', views.home, name='home'),\n    path('product/', views.product, name='products'),\n    path('customer/<str:pk_test>', views.customer, name='customer'),\n    path('createOrder/<str:pk>/', views.createOrder, name='create_order'),\n    path('updateOrder/<str:pk>/', views.updateOrder, name='update_order'),\n    path('deleteOrder/<str:pk>/', views.deleteOrder, name='delete_order'),\n    path('register/', views.register, name='register'),\n    path('login/', views.loginPage, name='login'),\n    path('logout/', views.logoutUser, name='logout'),",
         "detail": "accounts.urls",
         "documentation": {}
     },
@@ -471,11 +628,38 @@
         "documentation": {}
     },
     {
+        "label": "register",
+        "kind": 2,
+        "importPath": "accounts.views",
+        "description": "accounts.views",
+        "peekOfCode": "def register(request):\n    if request.user.is_authenticated:\n        return redirect('home')\n    else:\n        if request.method == 'POST':\n            form = CreateUserForm(request.POST)\n            if form.is_valid():\n                form.save()\n                user = form.cleaned_data.get('username')\n                messages.success(request, 'Account was created for ' + user)",
+        "detail": "accounts.views",
+        "documentation": {}
+    },
+    {
+        "label": "loginPage",
+        "kind": 2,
+        "importPath": "accounts.views",
+        "description": "accounts.views",
+        "peekOfCode": "def loginPage(request):\n    if request.user.is_authenticated:\n        return redirect('home')\n    else:\n        if request.method == 'POST':\n            username = request.POST.get('username')\n            password= request.POST.get('password')\n            user = authenticate(request, username=username, password=password)\n            if user is not None:\n                login(request, user)",
+        "detail": "accounts.views",
+        "documentation": {}
+    },
+    {
+        "label": "logoutUser",
+        "kind": 2,
+        "importPath": "accounts.views",
+        "description": "accounts.views",
+        "peekOfCode": "def logoutUser(request):\n    logout(request)\n    return redirect('login')\n@login_required(login_url='login')\ndef product(request):\n    products = Product.objects.all()\n    paginator = Paginator(products, 2)\n    page_number = request.GET.get(\"page\")\n    page_obj = paginator.get_page(page_number)\n    return render(request, 'accounts/product.html', {'page_obj':page_obj})",
+        "detail": "accounts.views",
+        "documentation": {}
+    },
+    {
         "label": "product",
         "kind": 2,
         "importPath": "accounts.views",
         "description": "accounts.views",
-        "peekOfCode": "def product(request):\n    products = Product.objects.all()\n    return render(request, 'accounts/product.html', {'products': products})\ndef customer(request, pk_test):\n    #tidak dapat object throw 404\n    customer = get_object_or_404(Customer, id=pk_test)\n    orders = customer.order_set.all()\n    orders_count = orders.count()\n    context = {'customer': customer, 'orders': orders, 'orders_count': orders_count}\n    return render(request, 'accounts/customer.html', context)",
+        "peekOfCode": "def product(request):\n    products = Product.objects.all()\n    paginator = Paginator(products, 2)\n    page_number = request.GET.get(\"page\")\n    page_obj = paginator.get_page(page_number)\n    return render(request, 'accounts/product.html', {'page_obj':page_obj})\n@login_required(login_url='login')\ndef customer(request, pk_test):\n    #tidak dapat object throw 404\n    customer = get_object_or_404(Customer, id=pk_test)",
         "detail": "accounts.views",
         "documentation": {}
     },
@@ -484,7 +668,7 @@
         "kind": 2,
         "importPath": "accounts.views",
         "description": "accounts.views",
-        "peekOfCode": "def customer(request, pk_test):\n    #tidak dapat object throw 404\n    customer = get_object_or_404(Customer, id=pk_test)\n    orders = customer.order_set.all()\n    orders_count = orders.count()\n    context = {'customer': customer, 'orders': orders, 'orders_count': orders_count}\n    return render(request, 'accounts/customer.html', context)\ndef createOrder(request):\n    form = OrderForm()\n    if request.method == 'POST':",
+        "peekOfCode": "def customer(request, pk_test):\n    #tidak dapat object throw 404\n    customer = get_object_or_404(Customer, id=pk_test)\n    orders = customer.order_set.all()\n    orders_count = orders.count()\n    myFilter = OrderFilter(request.GET, queryset=orders)\n    orders = myFilter.qs #orders Query Search\n    context = {'customer': customer, 'orders': orders, 'orders_count': orders_count, 'myFilter': myFilter}\n    return render(request, 'accounts/customer.html', context)\n@login_required(login_url='login')",
         "detail": "accounts.views",
         "documentation": {}
     },
@@ -493,7 +677,7 @@
         "kind": 2,
         "importPath": "accounts.views",
         "description": "accounts.views",
-        "peekOfCode": "def createOrder(request):\n    form = OrderForm()\n    if request.method == 'POST':\n        # print('Printing Post', request.POST) print result form iha terminal\n        form = OrderForm(request.POST)\n        if form.is_valid():\n            form.save()\n            return redirect('/')\n    context = {'form': form}\n    return render(request, 'accounts/order_form.html', context)",
+        "peekOfCode": "def createOrder(request, pk):\n    OrderFormSet = inlineformset_factory(Customer, Order, fields=('product', 'status'), extra=3)\n    customer = Customer.objects.get(id=pk)\n    formset = OrderFormSet(queryset=Order.objects.none(), instance=customer)\n    # form = OrderForm(initial={'customer':customer}) single form input\n    if request.method == 'POST':\n        # print('Printing Post', request.POST) print result form iha terminal\n        # form = OrderForm(request.POST)  single input post\n        formset = OrderFormSet(request.POST, instance=customer)\n        if formset.is_valid():",
         "detail": "accounts.views",
         "documentation": {}
     },
@@ -502,7 +686,7 @@
         "kind": 2,
         "importPath": "accounts.views",
         "description": "accounts.views",
-        "peekOfCode": "def updateOrder(request, pk):\n    order = Order.objects.get(id=pk)\n    form = OrderForm(instance=order)\n    if request.method == 'POST':\n        # print('Printing Post', request.POST) print result form iha terminal\n        form = OrderForm(request.POST, instance=order)\n        if form.is_valid():\n            form.save()\n            return redirect('/')\n    context = {'form': form}",
+        "peekOfCode": "def updateOrder(request, pk):\n    order = Order.objects.get(id=pk)\n    form = OrderForm(instance=order)\n    if request.method == 'POST':\n        # print('Printing Post', request.POST) print result form iha terminal\n        form = OrderForm(request.POST, instance=order)\n        if form.is_valid():\n            form.save()\n            return redirect('customer', pk_test=order.customer.id)\n    context = {'form': form}",
         "detail": "accounts.views",
         "documentation": {}
     },
