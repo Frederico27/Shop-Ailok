@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.models import Group
 from .models import * #import all (Product, Customer, Order, Tag)
 from .forms import OrderForm, CreateUserForm
 from django.forms import inlineformset_factory
@@ -8,8 +9,10 @@ from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from .decorators import unauthenticated_user, allowed_users, admin_only
 
 @login_required(login_url='login')
+@admin_only
 def home(request):
     orders = Order.objects.all()
     customer = Customer.objects.all()
@@ -19,55 +22,59 @@ def home(request):
     delivered = orders.filter(status='Delivered').count()
     pending = orders.filter(status='Pending').count()
     
-    
     context = {'orders': orders, 'customers': customer,
     'total_orders':total_orders, 'total_customer':total_customer, 
     'delivered':delivered, 'pending':pending}
     
     return render(request, 'accounts/dashboard.html', context)
 
-def register(request):
-    if request.user.is_authenticated:
-        return redirect('home')
-    else:
-        if request.method == 'POST':
-            form = CreateUserForm(request.POST)
-            if form.is_valid():
-                form.save()
-                user = form.cleaned_data.get('username')
-                messages.success(request, 'Account was created for ' + user)
-                return redirect('login')
-            else:
-                # If form is invalid, display validation errors
-                for field, errors in form.errors.items():
-                    for error in errors:
-                        messages.error(request, f'{field}: {error}')
-        else:
-            form = CreateUserForm()
-            
-        context = {'form':form}
-        return render(request, 'accounts/register.html', context)
+def userPage(request):
+    context = {}
+    return render(request, 'accounts/user.html', context)
 
-def loginPage(request):
-    if request.user.is_authenticated:
-        return redirect('home')
+@unauthenticated_user
+def register(request):
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            
+            #User Group
+            group = Group.objects.get(name='customer')
+            user.groups.add(group)
+            
+            #Message Success
+            messages.success(request, 'Account was created for ' + username)
+            return redirect('login')
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f'{field}: {error}')
     else:
-        if request.method == 'POST':
-            username = request.POST.get('username')
-            password= request.POST.get('password')
+        form = CreateUserForm()
+        
+    context = {'form': form}
+    return render(request, 'accounts/register.html', context)
+
+@unauthenticated_user
+def loginPage(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password= request.POST.get('password')
             
-            user = authenticate(request, username=username, password=password)
+        user = authenticate(request, username=username, password=password)
             
-            if user is not None:
-                login(request, user)
-                return redirect('home')
-            else:
-                messages.info(request, 'Username or Password is incorrect')
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.info(request, 'Username or Password is incorrect')
                 
         
-        context = {}
+    context = {}
         
-        return render(request, 'accounts/login.html', context)
+    return render(request, 'accounts/login.html', context)
 
 @login_required(login_url='login')
 def logoutUser(request):

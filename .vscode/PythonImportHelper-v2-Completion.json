@@ -185,6 +185,54 @@
         "documentation": {}
     },
     {
+        "label": "HttpResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "HttpResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "get_object_or_404",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
         "label": "django_filters",
         "kind": 6,
         "isExtraImport": true,
@@ -259,6 +307,14 @@
         "documentation": {}
     },
     {
+        "label": "Group",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
         "label": "TestCase",
         "importPath": "django.test",
         "description": "django.test",
@@ -296,38 +352,6 @@
         "description": "accounts.views",
         "isExtraImport": true,
         "detail": "accounts.views",
-        "documentation": {}
-    },
-    {
-        "label": "get_object_or_404",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "render",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "redirect",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "HttpResponse",
-        "importPath": "django.http",
-        "description": "django.http",
-        "isExtraImport": true,
-        "detail": "django.http",
         "documentation": {}
     },
     {
@@ -547,6 +571,33 @@
         "documentation": {}
     },
     {
+        "label": "unauthenticated_user",
+        "kind": 2,
+        "importPath": "accounts.decorators",
+        "description": "accounts.decorators",
+        "peekOfCode": "def unauthenticated_user(view_func):\n    def wrapper_func(request, *args, **kwargs):\n        if request.user.is_authenticated:\n            return redirect('home')\n        else:\n            return view_func(request, *args, **kwargs)\n    return wrapper_func\ndef allowed_users(allowed_roles=[]):\n    def decorator(view_func):\n        def wrapper_func(request, *args, **kwargs):",
+        "detail": "accounts.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "allowed_users",
+        "kind": 2,
+        "importPath": "accounts.decorators",
+        "description": "accounts.decorators",
+        "peekOfCode": "def allowed_users(allowed_roles=[]):\n    def decorator(view_func):\n        def wrapper_func(request, *args, **kwargs):\n            group = None\n            if request.user.groups.exists():\n                group = request.user.groups.all()[0].name\n            if group in allowed_roles:\n                return view_func(request, *args, **kwargs)\n            else:\n                return HttpResponse('You are not authorized to view this page')",
+        "detail": "accounts.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "admin_only",
+        "kind": 2,
+        "importPath": "accounts.decorators",
+        "description": "accounts.decorators",
+        "peekOfCode": "def admin_only(view_func):\n    def wrapper_function(request, *args, **kwargs):\n        group = None\n        if request.user.groups.exists():\n            group = request.user.groups.all()[0].name\n        if group == 'admin':\n            return view_func(request, *args, **kwargs)\n        elif group == 'customer':\n            return redirect('user-page')\n        else:",
+        "detail": "accounts.decorators",
+        "documentation": {}
+    },
+    {
         "label": "OrderFilter",
         "kind": 6,
         "importPath": "accounts.filters",
@@ -628,11 +679,20 @@
         "documentation": {}
     },
     {
+        "label": "userPage",
+        "kind": 2,
+        "importPath": "accounts.views",
+        "description": "accounts.views",
+        "peekOfCode": "def userPage(request):\n    context = {}\n    return render(request, 'accounts/user.html', context)\n@unauthenticated_user\ndef register(request):\n    if request.method == 'POST':\n        form = CreateUserForm(request.POST)\n        if form.is_valid():\n            user = form.save()\n            username = form.cleaned_data.get('username')",
+        "detail": "accounts.views",
+        "documentation": {}
+    },
+    {
         "label": "register",
         "kind": 2,
         "importPath": "accounts.views",
         "description": "accounts.views",
-        "peekOfCode": "def register(request):\n    if request.user.is_authenticated:\n        return redirect('home')\n    else:\n        if request.method == 'POST':\n            form = CreateUserForm(request.POST)\n            if form.is_valid():\n                form.save()\n                user = form.cleaned_data.get('username')\n                messages.success(request, 'Account was created for ' + user)",
+        "peekOfCode": "def register(request):\n    if request.method == 'POST':\n        form = CreateUserForm(request.POST)\n        if form.is_valid():\n            user = form.save()\n            username = form.cleaned_data.get('username')\n            #User Group\n            group = Group.objects.get(name='customer')\n            user.groups.add(group)\n            #Message Success",
         "detail": "accounts.views",
         "documentation": {}
     },
@@ -641,7 +701,7 @@
         "kind": 2,
         "importPath": "accounts.views",
         "description": "accounts.views",
-        "peekOfCode": "def loginPage(request):\n    if request.user.is_authenticated:\n        return redirect('home')\n    else:\n        if request.method == 'POST':\n            username = request.POST.get('username')\n            password= request.POST.get('password')\n            user = authenticate(request, username=username, password=password)\n            if user is not None:\n                login(request, user)",
+        "peekOfCode": "def loginPage(request):\n    if request.method == 'POST':\n        username = request.POST.get('username')\n        password= request.POST.get('password')\n        user = authenticate(request, username=username, password=password)\n        if user is not None:\n            login(request, user)\n            return redirect('home')\n        else:\n            messages.info(request, 'Username or Password is incorrect')",
         "detail": "accounts.views",
         "documentation": {}
     },
