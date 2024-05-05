@@ -145,6 +145,30 @@
         "documentation": {}
     },
     {
+        "label": "template",
+        "importPath": "django",
+        "description": "django",
+        "isExtraImport": true,
+        "detail": "django",
+        "documentation": {}
+    },
+    {
+        "label": "forms",
+        "importPath": "django",
+        "description": "django",
+        "isExtraImport": true,
+        "detail": "django",
+        "documentation": {}
+    },
+    {
+        "label": "forms",
+        "importPath": "django",
+        "description": "django",
+        "isExtraImport": true,
+        "detail": "django",
+        "documentation": {}
+    },
+    {
         "label": "admin",
         "importPath": "django.contrib",
         "description": "django.contrib",
@@ -247,22 +271,6 @@
         "description": "django_filters",
         "isExtraImport": true,
         "detail": "django_filters",
-        "documentation": {}
-    },
-    {
-        "label": "forms",
-        "importPath": "django",
-        "description": "django",
-        "isExtraImport": true,
-        "detail": "django",
-        "documentation": {}
-    },
-    {
-        "label": "forms",
-        "importPath": "django",
-        "description": "django",
-        "isExtraImport": true,
-        "detail": "django",
         "documentation": {}
     },
     {
@@ -523,6 +531,24 @@
         "description": "accounts.migrations.0009_order_note_alter_order_date_created",
         "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('accounts', '0008_alter_product_description'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='order',\n            name='note',\n            field=models.CharField(max_length=200, null=True),\n        ),",
         "detail": "accounts.migrations.0009_order_note_alter_order_date_created",
+        "documentation": {}
+    },
+    {
+        "label": "has_group",
+        "kind": 2,
+        "importPath": "accounts.templatetags.auth_extras",
+        "description": "accounts.templatetags.auth_extras",
+        "peekOfCode": "def has_group(user, group_name):\n    return user.groups.filter(name=group_name).exists()",
+        "detail": "accounts.templatetags.auth_extras",
+        "documentation": {}
+    },
+    {
+        "label": "register",
+        "kind": 5,
+        "importPath": "accounts.templatetags.auth_extras",
+        "description": "accounts.templatetags.auth_extras",
+        "peekOfCode": "register = template.Library() \n@register.filter(name='has_group') \ndef has_group(user, group_name):\n    return user.groups.filter(name=group_name).exists()",
+        "detail": "accounts.templatetags.auth_extras",
         "documentation": {}
     },
     {
